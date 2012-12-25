@@ -23,7 +23,7 @@
  *
  */
 interface wundergroundWeatherAPI {
-  /**
+	/**
 	 * @return string
 	 */
 	public function getApplicationString();
@@ -543,7 +543,7 @@ class WundergroundWeatherAlerts extends WundergroundWeatherAbstract {
 class WundergroundWeatherHistory extends WundergroundWeatherAbstract implements wundergroundWeatherDateAPI{
 	protected $str_geolookup = 'history_%s%s/q/';
 	public function __construct($date){
-		$this->str_geolookup = sprintf($this->getLookUp(), $date);
+		$this->str_geolookup = sprintf($this->str_geolookup, $date, '%s');
 	}
 }
 /**
@@ -553,7 +553,7 @@ class WundergroundWeatherHistory extends WundergroundWeatherAbstract implements 
 class WundergroundWeatherPlanner extends WundergroundWeatherAbstract implements wundergroundWeatherDateAPI{
 	protected $str_geolookup = 'planner_%s%s/q/';
 	public function __construct($date){
-		$this->str_geolookup = sprintf($this->getLookUp(), $date);
+		$this->str_geolookup = sprintf($this->str_geolookup, $date, '%s');
 	}
 }
 
@@ -934,7 +934,7 @@ class WundergroundWeather {
 	}
 	/**
 	 * @var string $date YYMMDD
-	 * @return WundergroundWeatherForecast10Day
+	 * @return WundergroundWeatherHistory
 	 */
 	public function History($date){
 		$this->subClass = new WundergroundWeatherHistory($date);
@@ -942,7 +942,7 @@ class WundergroundWeather {
 	}
 	/**
 	 * @var string $datehour YYMMDDHH
-	 * @return WundergroundWeatherForecast10Day
+	 * @return WundergroundWeatherPlanner
 	 */
 	public function Planner($datehour){
 		$this->subClass = new WundergroundWeatherPlanner($datehour);
