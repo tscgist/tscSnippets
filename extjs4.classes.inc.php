@@ -156,11 +156,11 @@ class extjs4 extends UtilRenderer implements UtilRendererType {
 	}
 	
 	/**
-	 * google lib
+	 * extjs lib
 	 * @return string
 	 */
 	public static function script($which=null){
-		$which = !$which ? 1 : $which;
+	   // not implemented because there is no CDN file available for Extjs 4
 	}
 	/**
 	 * @return UtilVar
@@ -260,7 +260,7 @@ if(!function_exists("func")) {
 			$rc = new ReflectionClass ( 'UtilFunctionStack' );
 			return $rc->newInstanceArgs ( $args );
 		}
-		return google::F( $def );
+		return extjs4::F( $def );
 	}
 }
 if(!function_exists("obj")) {
