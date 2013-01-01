@@ -1,8 +1,9 @@
 tscSnippets
 ===========
 
-Classes Repository for d3 chart library
-for D3 and other Rendertypes.
+Classes Repository for php based javascript renderer libraries.
+Supports:
+- d3 + nvd3
 - Google
   + Maps
   + Visualization
@@ -12,4 +13,4 @@ for D3 and other Rendertypes.
 - Math
 - Extjs4
 
-All classes need to include the d3.classes.inc.php.
+All renderer types other then d3 need to include the d3.classes.inc.php.
