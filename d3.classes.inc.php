@@ -31,7 +31,7 @@ interface UtilRendererType {}
  * @author Thomas Schäfer <thomas.schaefer@query4u.de>
  */
 class Date {
-  protected $y, $m, $d, $h, $n, $s;
+	protected $y, $m, $d, $h, $n, $s;
 	public function __construct($y=null, $m=null, $d=null, $h = null, $n = null, $s = null){
 		$this->y = $y;
 		$this->m = $m;
@@ -772,7 +772,9 @@ class UtilJson {
 	 */
 	protected function toJSON($data = null, $escape = true) {
 		
-	    if($data instanceof Closure){
+	    if($data instanceof UtilFunctionStack){//added 2013-01-01
+	    	return $data;
+	    } elseif($data instanceof Closure){
 	    	return (string) new UtilClosure ( $data );
 	    } elseif( $data instanceof Date) { 
 	    	return $data;
@@ -1682,6 +1684,7 @@ abstract class UtilRenderer {
 					$params[$key] = self::escape ( $val );
 					$this->escaping = false;
 				} elseif ($this->unescaping) {
+					echo "#";
 					$params[$key] = self::unescape ( $val );
 					$this->unescaping = false;
 				} else {
